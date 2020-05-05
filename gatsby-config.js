@@ -30,7 +30,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: process.env.DEPLOY_URL
+          ? 'https://che-strapi-gatsby-2.herokuapp.com/'
+          : 'http://localhost:1337',
         queryLimit: 1000, // Default to 100
         contentTypes: [`article`, `user`],
         //If using single types place them in this array.
