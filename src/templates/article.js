@@ -10,12 +10,14 @@ const ArticleTemplate = ({ data }) => (
       {'<'} Go to Home
     </Link>
     <h1>{data.strapiArticle.title}</h1>
+    { data.strapiArticle.author &&
     <p>
       by{" "}
       <Link to={`/authors/User_${data.strapiArticle.author.id}`}>
         {data.strapiArticle.author.username}
       </Link>
     </p>
+    }
     <Img fluid={data.strapiArticle.image.childImageSharp.fluid} />
     <p>{data.strapiArticle.content}</p>
   </Layout>
