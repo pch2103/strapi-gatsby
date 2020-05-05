@@ -10,8 +10,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home"/>
-      <h1>Hi people</h1>
-      <p>Now go build something great.</p>
+      <h1>Now go build something great.</h1>
       <ul>
         {articles.map(article => (
           <li key={article.node.id}>
