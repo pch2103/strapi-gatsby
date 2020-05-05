@@ -4,6 +4,8 @@ import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ReactMarkdown from "react-markdown"
+import classes from './index.module.scss'
 
 const IndexPage = ({ data }) => {
   const articles = data.allStrapiArticle.edges
@@ -11,16 +13,19 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home"/>
       <h1>Now go build something great.</h1>
-      <ul>
+      <ul className={classes.main}>
         {articles.map(article => (
-          <li key={article.node.id}>
-            <h3>
-              <Link to={`/${article.node.id}`}>
+          <li key={article.node.id} >
+            <h2>
                 {article.node.title}
-              </Link>
-            </h3>
+            </h2>
             <Image fixed={article.node.image.childImageSharp.fixed}/>
-            <p>{article.node.content}</p>
+            <ReactMarkdown
+              source={article.node.content.substring(0,300).concat('...')}
+            />
+            <Link to={`/${article.node.id}`}>
+              Read more
+            </Link>
           </li>
         ))}
       </ul>
